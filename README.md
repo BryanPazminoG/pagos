@@ -1,2 +1,0 @@
-# pagos
-Orquestador de pagos.
