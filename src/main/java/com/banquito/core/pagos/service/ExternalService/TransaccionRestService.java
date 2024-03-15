@@ -15,21 +15,21 @@ public class TransaccionRestService {
     }
 
     public ResponseEntity<String> obtenerPorId(Integer codTransaccion) {
-        String url = "http://localhost:8081/api/v1/transacciones/" + codTransaccion;
+        String url = "http://35.232.62.178:8080/api/v1/transacciones/" + codTransaccion;
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
         validarRespuesta(response);
         return response;
     }
 
     public ResponseEntity<String> crear(String transaccionDtoJson) {
-        String url = "http://localhost:8081/api/v1/transacciones";
+        String url = "http://35.232.62.178:8080/api/v1/transacciones";
         ResponseEntity<String> response = restTemplate.postForEntity(url, transaccionDtoJson, String.class);
         validarRespuesta(response);
         return response;
     }
 
     public ResponseEntity<String> depositar(String numCuenta, String valorDebeJson) {
-        String url = UriComponentsBuilder.fromHttpUrl("http://localhost:8081/api/v1/transacciones/depositar")
+        String url = UriComponentsBuilder.fromHttpUrl("http://35.232.62.178:8080/api/v1/transacciones/depositar")
                 .queryParam("numCuenta", numCuenta)
                 .build()
                 .toString();
@@ -39,7 +39,7 @@ public class TransaccionRestService {
     }
 
     public ResponseEntity<String> retirar(String numCuenta, String valorHaberJson) {
-        String url = UriComponentsBuilder.fromHttpUrl("http://localhost:8081/api/v1/transacciones/retirar")
+        String url = UriComponentsBuilder.fromHttpUrl("http://35.232.62.178:8080/api/v1/transacciones/retirar")
                 .queryParam("numCuenta", numCuenta)
                 .build()
                 .toString();
@@ -49,14 +49,14 @@ public class TransaccionRestService {
     }
 
     public ResponseEntity<String> transferir(String transaccionDtoJson) {
-        String url = "http://localhost:8081/api/v1/transacciones/transferir";
+        String url = "http://35.232.62.178:8080/api/v1/transacciones";
         ResponseEntity<String> response = restTemplate.postForEntity(url, transaccionDtoJson, String.class);
         validarRespuesta(response);
         return response;
     }
 
     public ResponseEntity<String> buscarPorCodigoCuenta(Integer codCuentaOrigen) {
-        String url = UriComponentsBuilder.fromHttpUrl("http://localhost:8081/api/v1/transacciones")
+        String url = UriComponentsBuilder.fromHttpUrl("http://35.232.62.178:8080/api/v1/transacciones")
                 .queryParam("codCuentaOrigen", codCuentaOrigen)
                 .build()
                 .toString();
